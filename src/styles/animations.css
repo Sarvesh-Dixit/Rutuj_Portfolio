@@ -1,0 +1,95 @@
+/* Decorative, CSS-driven loops. All are neutralised under reduced motion. */
+
+@keyframes rp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rp-spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes rp-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes rp-scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  55%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes rp-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes rp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+@keyframes rp-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.anim-spin-slow {
+  animation: rp-spin 70s linear infinite;
+}
+.anim-spin-reverse {
+  animation: rp-spin-reverse 110s linear infinite;
+}
+.anim-float {
+  animation: rp-float 7s ease-in-out infinite;
+}
+.anim-float-delayed {
+  animation: rp-float 9s ease-in-out 1.5s infinite;
+}
+.anim-scroll-cue {
+  animation: rp-scroll-cue 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+.anim-marquee {
+  animation: rp-marquee 48s linear infinite;
+}
+.anim-pulse-dot {
+  animation: rp-pulse 2.4s ease-in-out infinite;
+}
+.anim-caret {
+  animation: rp-caret 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
